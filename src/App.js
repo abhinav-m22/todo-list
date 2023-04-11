@@ -1,25 +1,23 @@
 import logo from './logo.svg';
 import './App.css';
+import { useState, useEffect } from 'react';
+import Loader from './components/Loader';
+import axios from 'axios';
+import ItemList from './components/ItemList';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+  const [items, setItems] = useState(null);
+
+  useEffect(() => {
+    axios.get("https://jsonplaceholder.typicode.com/todos").then((res) => {
+      setItems(res.data);
+    });
+  }, [])
+
+  return <div>
+    { items ? <ItemList items={items} /> : <Loader /> }
+  </div>
 }
 
 export default App;
