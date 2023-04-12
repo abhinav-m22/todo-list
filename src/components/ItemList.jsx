@@ -6,10 +6,9 @@ import "./ItemList.css"
 class ItemList extends Component {
     render() {
         const { filter } = this.props
-        const ulStyle = {border: '2px solid green', width:'100%', listStyleType:'none'}
+        const ulStyle = {border: '2px solid green', width:'90%', listStyleType:'none', marginLeft: 50}
         const liStyle = {borderStyle: 'groove', background: "#e9a5f2"}
         return (
-            // <div>
             <>
                 <ul className='list-group' style={ulStyle} >
                     
@@ -17,7 +16,7 @@ class ItemList extends Component {
                         <div className='text-center mt-2'>
                             <li className='list-item' style={liStyle}>{item.id}.&nbsp;&nbsp;&nbsp;&nbsp;{item.title}
                             
-                            <p className='list-status'>{item.completed ? "Completed" : "Not Completed"}</p>
+                            <p className='list-status'>{item.completed ? "Complete ✅" : "Incomplete ❌"}</p>
                             </li>
                         </div>
                     ))}
